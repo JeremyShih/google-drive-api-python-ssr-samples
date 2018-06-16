@@ -8,12 +8,11 @@ the user has access to.
 from __future__ import print_function
 from apiclient.discovery import build
 import httplib2
-from httplib2 import Http
-from httplib2 import socks
+from httplib2 import Http, socks
 from oauth2client import file, client, tools
 
 # Setup the Drive v3 API
-SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+SCOPES = 'https://www.googleapis.com/auth/drive'
 store = file.Storage('credentials.json')
 creds = store.get()
 p = httplib2.ProxyInfo(proxy_type=socks.PROXY_TYPE_SOCKS5, proxy_host="127.0.0.1", proxy_port=1086)
@@ -32,3 +31,4 @@ else:
     print('Files:')
     for item in items:
         print('{0} ({1})'.format(item['name'], item['id']))
+
